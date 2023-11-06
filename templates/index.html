@@ -3,13 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+       ul li {
+           display: inline-block;
+           margin-left: 10px;
+           margin-right: 10px;
+       }
+       #progress {
+           width: 200px;
+       }
+       video {
+           width: 800px;
+           height: 450px;
+       }
+       #video-container {
+           position: fixed;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 100%;
+           z-index: 9999;
+           background-color: black;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+        }
+    </style>
 </head>
 <body>
+    <div class="class-video-container">
+        <figure id="videoContainer">
+            <video id="video" controls preload="metadata">
+                <source
+                  src="/static/resources/pretty.mp4"
+                  type="video/mp4" />
+            </video>
+        </figure>
+    </div>
+
+    <div class="class-video-controls">
+        <ul id="video-controls" class="controls">
+          <li><button id="playpause" type="button">Play/Pause</button></li>
+          <li><button id="stop" type="button">Stop</button></li>
+          <li class="progress">
+            <progress id="progress" value="0" min="0">
+              <span id="progress-bar"></span>
+            </progress>
+          </li>
+          <li><button id="mute" type="button">Mute/Unmute</button></li>
+          <li><button id="volinc" type="button">Vol+</button></li>
+          <li><button id="voldec" type="button">Vol-</button></li>
+          <li><button id="fs" type="button">Fullscreen</button></li>
+        </ul>
+    </div>
+
+    <div class="class-video-editor">
+        <ul id="video-editor" class="editor">
+          <li><button id="edit-start" type="button">设置开始点</button></li>
+          <li><button id="edit-end" type="button">设置结束点</button></li>
+          <li><button id="edit" type="button">裁剪</button></li>
+        </ul>
+    </div>
+
+    <!-- 引用 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
     <script type="text/javascript" charset="utf-8"></script>
     <!-- 业务逻辑 -->
-    <script type="text/javascript" charSet="utf-8" src="/static/utils.js"></script>
-    <script type="text/javascript" charSet="utf-8" src="/static/chat.js"></script>
-    <script type="text/javascript" charSet="utf-8" src="/static/main.js"></script>
+    <script type="text/javascript" charSet="utf-8" src="/static/js/utils.js"></script>
+    <script type="text/javascript" charSet="utf-8" src="/static/js/chat.js"></script>
+    <script type="text/javascript" charSet="utf-8" src="/static/js/video.js"></script>
+    <script type="text/javascript" charSet="utf-8" src="/static/js/main.js"></script>
 </body>
 </html>
