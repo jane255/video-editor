@@ -139,6 +139,8 @@ class Video {
             let s = parseInt(video.currentTime)
             self.editStart = formatSeconds(s)
             log("设置开始点", self.editStart)
+            let ele = e(element)
+            ele.innerText = `设置开始点 -- ${self.editStart}`
         })
     }
 
@@ -150,6 +152,8 @@ class Video {
             let s = parseInt(video.currentTime)
             self.editEnd = formatSeconds(s)
             log("设置结束点", self.editEnd)
+            let ele = e(element)
+            ele.innerText = `设置结束点 -- ${self.editEnd}`
         })
     }
 
@@ -184,6 +188,19 @@ class Video {
         let videoContainer = document.createElement('div')
         videoContainer.id = 'video-container'
         videoContainer.appendChild(video)
+
+        // 创建关闭按钮
+        let closeButton = document.createElement('button')
+        closeButton.className = 'close-button'
+        closeButton.innerHTML = '关闭'
+        closeButton.addEventListener('click', function() {
+            // 暂停视频
+            video.pause()
+            // 移除视频元素和黑屏容器
+            document.body.removeChild(videoContainer)
+        })
+
+        videoContainer.appendChild(closeButton)
         document.body.appendChild(videoContainer)
 
         // 播放视频
@@ -193,8 +210,6 @@ class Video {
         video.addEventListener('ended', function() {
             // 暂停视频
             video.pause();
-            // 移除视频元素和黑屏容器
-            // document.body.removeChild(videoContainer)
         })
     }
 

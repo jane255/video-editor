@@ -28,43 +28,57 @@
            justify-content: center;
            align-items: center;
         }
+       .close-button {
+           position: absolute;
+           top: 10px;
+           right: 10px;
+           z-index: 10000;
+           cursor: pointer;
+           background-color: transparent;
+           border: none;
+           color: white;
+           font-size: 20px;
+       }
     </style>
 </head>
 <body>
-    <div class="class-video-container">
-        <figure id="videoContainer">
-            <video id="video" controls preload="metadata">
-                <source
-                  src="/static/resources/pretty.mp4"
-                  type="video/mp4" />
-            </video>
-        </figure>
-    </div>
+    <div class="class-video">
+        <div><h1>axe-video-editor</h1></div>
 
-    <div class="class-video-controls">
-        <ul id="video-controls" class="controls">
-          <li><button id="playpause" type="button">Play/Pause</button></li>
-          <li><button id="stop" type="button">Stop</button></li>
-          <li class="progress">
-            <progress id="progress" value="0" min="0">
-              <span id="progress-bar"></span>
-            </progress>
-          </li>
-          <li><button id="mute" type="button">Mute/Unmute</button></li>
-          <li><button id="volinc" type="button">Vol+</button></li>
-          <li><button id="voldec" type="button">Vol-</button></li>
-          <li><button id="fs" type="button">Fullscreen</button></li>
-        </ul>
-    </div>
+        <div class="class-video-container">
+            <figure id="videoContainer">
+                <video id="video" controls preload="metadata">
+                    <source
+                      src="/static/resources/pretty.mp4"
+                      type="video/mp4" />
+                </video>
+            </figure>
+        </div>
 
-    <div class="class-video-editor">
-        <ul id="video-editor" class="editor">
-          <li><button id="edit-start" type="button">设置开始点</button></li>
-          <li><button id="edit-end" type="button">设置结束点</button></li>
-          <li><button id="edit" type="button">裁剪</button></li>
-        </ul>
-    </div>
+        <div class="class-video-controls">
+            <ul id="video-controls" class="controls">
+              <li><button id="playpause" type="button">Play/Pause</button></li>
+              <li><button id="stop" type="button">Reset</button></li>
+              <li class="progress">
+                <progress id="progress" value="0" min="0">
+                  <span id="progress-bar"></span>
+                </progress>
+              </li>
+              <li><button id="mute" type="button">Mute/Unmute</button></li>
+              <li><button id="volinc" type="button">Vol+</button></li>
+              <li><button id="voldec" type="button">Vol-</button></li>
+              <li><button id="fs" type="button">Fullscreen</button></li>
+            </ul>
+        </div>
 
+        <div class="class-video-editor">
+            <ul id="video-editor" class="editor">
+              <li><button id="edit-start" type="button">设置开始点 -- 00:00:00</button></li>
+              <li><button id="edit-end" type="button">设置结束点 -- 00:00:00</button></li>
+              <li><button id="edit" type="button">裁剪</button></li>
+            </ul>
+        </div>
+    </div>
     <!-- 引用 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
     <script type="text/javascript" charset="utf-8"></script>
