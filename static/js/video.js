@@ -176,7 +176,9 @@ class Video {
     }
 
     static playEditVideo(path) {
+        // 因为原视频还在播放，先暂停
         this.video.pause()
+
         // 创建一个 video 元素
         let video = document.createElement('video')
 
